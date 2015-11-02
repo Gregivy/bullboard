@@ -3,7 +3,7 @@ Accounts.ui.config({
 });   
 
 // This code only runs on the client
-angular.module('bullboard',['angular-meteor'],['ui.bootstrap']);
+angular.module('bullboard',['angular-meteor']);
  
 angular.module('bullboard').controller('HeaderCtrl', ['$scope', '$meteor', function ($scope, $meteor) {
     
