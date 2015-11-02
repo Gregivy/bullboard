@@ -22,3 +22,4 @@ accounts-password
 urigo:angular-blaze-template
 twbs:bootstrap
 angularui:angular-ui-bootstrap
+angularui:angular-ui-router
