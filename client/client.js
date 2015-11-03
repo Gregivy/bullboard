@@ -12,7 +12,7 @@ angular.module('bullboard',['angular-meteor', 'ui.router']);
       $stateProvider
         .state('ads', {
           url: '/ads',
-          templateUrl: 'client/templates/ads-list.ng.html',
+          templateUrl: 'client/templates/ads-view.ng.html',
           controller: 'AdListCtrl'
         });
  
