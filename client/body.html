@@ -1,7 +1,17 @@
 <body ng-app="bullboard">
-    <div ng-controller="HeaderCtrl"></div>
-    <div ng-controller="PageCtrl">
-        <div ui-view></div>
+    <div ng-controller="HeaderCtrl">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4"><h1>Bullboard</h1></div>
+                <div class="col-xs-4 col-xs-offset-4 text-right">{{> loginButtons align="right" class="super"}}</div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div ng-controller="PageCtrl">
+                <div ui-view></div>
+            </div>
+        </div>
     </div>
-    <div ng-include="'client/templates/footer.ng.html'"></div>
+    
+    <div ></div>
 </body>
