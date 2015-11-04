@@ -1,11 +1,7 @@
-
-.btn{
-	margin: auto;
+.desc1{
+	float: left;
 }
-.btn2{
-	margin: auto;
-}
-.main{
-	
-	margin-top: 1%;
+.desc{
+	float: left;
+	background-color: red;
 }
