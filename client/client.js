@@ -13,18 +13,9 @@ angular.module('bullboard',['angular-meteor', 'ui.router']);
         .state('ads', {
           url: '/ads',
           templateUrl: 'client/templates/ads-view.ng.html',
-          controller: 'AdListCtrl'
+          controller: 'AdsListCtrl'
         });
  
       $urlRouterProvider.otherwise("/ads");
     });
  
-angular.module('bullboard').controller('HeaderCtrl', ['$scope', '$meteor', function ($scope, $meteor) {
-    
-}]);
-angular.module('bullboard').controller('PageCtrl', ['$scope', '$meteor', function ($scope, $meteor) {
-    
-}]);
-angular.module('bullboard').controller('AdListCtrl', ['$scope', '$meteor', function ($scope, $stateParams) {
-    $scope.name = "gg";
-}]);
