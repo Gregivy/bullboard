@@ -1,3 +1,7 @@
 .checked {
     background-color: aqua;
 }
+#menu.affix {
+    top:0;
+    z-index:100;
+}

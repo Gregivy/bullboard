@@ -7,11 +7,34 @@
             </div>
         </div>
         <div class="container-fluid">
-            <div ng-controller="PageCtrl">
-                <div ui-view></div>
+            <div class="row">
+                <div class="col-md-3 col-xs-12" ng-controller="MenuCtrl">
+                    <nav data-spy="affix" data-offset-top="69" id="menu">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" placeholder="Искать в категории..." />
+                        <i class="glyphicon glyphicon-search form-control-feedback"></i>
+                    </div>
+                    <div class="visible-md-block visible-lg-block">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li role="presentation" class="active"><a href="#">Home</a></li>
+                            <li role="presentation"><a href="#">Profile</a></li>
+                            <li role="presentation"><a href="#">Messages</a></li>
+                        </ul>
+                    </div>
+                    <div class="visible-xs-block visible-sm-block">
+                        <select class="form-control">
+                            <option value="pizza">Pizza</option>
+                            <option value="burger">Burger</option>
+                            <option value="tacos">Tacos</option>
+                            <option value="garlic-bread">Garlic Bread</option>
+                        </select>
+                    </div>
+                    </nav>
+                </div>
+                <div class="col-md-9 col-xs-12" ng-controller="PageCtrl">
+                    <div ui-view></div>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div ></div>
 </body>
