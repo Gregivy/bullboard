@@ -14,19 +14,22 @@
 
 
 
-<div ng-repeat="item in ads"  ng-class="['checked':item.checked']">
+<div ng-repeat="item in ads"  ng-class="{'checked':item.checked}">
 	<div class="row">
-	<div class="col-md-3">
-		<img class="imges" ng-src="{{item.img}}">
+		
+	<div class="col-md-3 col-xs-6">
+		<a href="#" class="thumbnail">
+			<img  class="img-rounded" ng-src="{{item.img}}" alt="...">
+		</a>
 	</div>
 	
-	<div class="col-md-9">
+	<div class="col-md-9 col-xs-6">
 		<p>
 			<a  ng-href="#">{{item.author}}</a>
 		</p>
-		<p>Описание:<br>{{item.desc}}</p>
-		<p>Цена: {{item.price}}руб.</p>
-		<p>Дата: {{item.date}}</p>
+		<dl><dt>Описание: </dt> <tt> {{item.desc}}</tt></dl>
+		<dl class="dl-horizontal"> <dt>Цена: </dt> <tt> {{item.price}}руб.</tt></dl>
+		<dl class="dl-horizontal"> <dt>Дата: </dt> <tt> {{item.date}}</tt></dl>
 	</div>
 
 </div>
@@ -42,6 +45,7 @@
 				<span class="sr-only" ng-show="n==currentPage">
 				что тут??
 				</span>
+				{{n}}
 			</a>
 		</li>
 
