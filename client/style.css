@@ -5,3 +5,15 @@
     top:0;
     z-index:100;
 }
+.imges{
+height: 100px;
+width: 100px;
+}
+
+
+.name{
+	cursor: pointer;
+}
+.pages{
+	text-align: center;
+}
