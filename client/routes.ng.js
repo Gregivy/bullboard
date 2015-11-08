@@ -9,7 +9,7 @@
         })
         .state('account', {
             url: '/account/:id',
-            templateUrl: 'client/ads/view/user-account.ng.html',
+            templateUrl: 'client/users/view/user-account.ng.html',
             controller: 'UserAccountCtrl'
         });
     $urlRouterProvider.otherwise("/ads/all/1");
