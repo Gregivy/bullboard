@@ -1,0 +1,50 @@
+<div>
+	<p ng-show="query">
+		Поисковой запрос:  {{query}}
+	</p>
+	<p>
+		сортировать по: 
+	</p>
+</div>
+
+<div ng-repeat="item in ads"  ng-class="{'checked':item.checked}">
+	<div class="row">
+		
+	<div class="col-md-3 col-xs-6">
+		<a href="#" class="thumbnail">
+			<img  class="img-rounded" ng-src="{{item.img}}" alt="...">
+		</a>
+	</div>
+	
+	<div class="col-md-9 col-xs-6">
+		<p>
+			<a  ng-href="#">{{item.author}}</a>: {{item.name}}
+		</p>
+		<dl><dt>Описание: </dt> <tt> {{item.desc}}</tt></dl>
+		<dl class="dl-horizontal"> <dt>Цена: </dt> <tt> {{item.price}}руб.</tt></dl>
+		<dl class="dl-horizontal"> <dt>Дата: </dt> <tt> {{item.date}}</tt></dl>
+	</div>
+
+</div>
+</div>
+<nav class="pages">
+	<ul class="pagination">
+		<li ng-show="currentPage!=1">
+			<a href="#" aria-label="Previous"><span class="glyphicon glyphicon-chevron-left"></span></a>
+		</li>
+
+		<li ng-repeat="n in [] | range:lastPage" ng-class="{'active': n==currentPage}">
+			<a href="{{addressPattern}}{{n}}">
+				<span class="sr-only" ng-show="n==currentPage">
+				что тут??
+				</span>
+				{{n}}
+			</a>
+		</li>
+
+		<li ng-show="currentPage!=lastPage && lastPage!=0">
+			<a href="#" aria-label="Next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+		</li>
+
+	</ul>
+</nav>

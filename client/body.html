@@ -1,5 +1,5 @@
-<body ng-app="bullboard">
-    <div ng-controller="HeaderCtrl">
+<body ng-app="bullboard" ng-controller="PageCtrl">
+    <div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-4"><h1>Bullboard</h1></div>
@@ -8,10 +8,10 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3 col-xs-12" ng-controller="MenuCtrl">
+                <div class="col-md-3 col-xs-12">
                     <nav data-spy="affix" data-offset-top="69" id="menu">
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control" placeholder="Искать в категории..." />
+                        <input type="text" class="form-control" placeholder="Искать в категории..." ng-model="query">
                         <i class="glyphicon glyphicon-search form-control-feedback"></i>
                     </div>
                     <div class="visible-md-block visible-lg-block">
@@ -22,7 +22,7 @@
                         </ul>
                     </div>
                     <div class="visible-xs-block visible-sm-block">
-                        <select class="form-control">
+                        <select class="form-control" ng-model="category">
                             <option value="pizza">Pizza</option>
                             <option value="burger">Burger</option>
                             <option value="tacos">Tacos</option>
@@ -31,7 +31,7 @@
                     </div>
                     </nav>
                 </div>
-                <div class="col-md-9 col-xs-12" ng-controller="PageCtrl">
+                <div class="col-md-9 col-xs-12">
                     <div ui-view></div>
                 </div>
             </div>
