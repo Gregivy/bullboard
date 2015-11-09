@@ -2,7 +2,7 @@ Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
 });   
 
-angular.module('bullboard',['angular-meteor', 'ui.router']);
+angular.module('bullboard',['angular-meteor', 'ui.router','accounts.ui','ui.bootstrap']);
 
 angular.module('bullboard').filter('range', function() {
   return function(input, total) {

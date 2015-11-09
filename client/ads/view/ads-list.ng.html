@@ -1,9 +1,17 @@
 <div>
-	<p ng-show="query">
-		Поисковой запрос:  {{query}}
-	</p>
+    <h2>
+        {{categoryName}}
+        <span ng-show="query">, Поисковой запрос:  {{query}}</span>
+    </h2>
+	
 	<p>
 		сортировать по: 
+        <select ng-model="sortby" class="">
+            <option value="date">дате</option>
+            <option value="priceup">цене ↑</option>
+            <option value="pricedown">цене ↓</option>
+            <option value="name">названию</option>
+        </select>
 	</p>
 </div>
 
@@ -11,7 +19,7 @@
 	<div class="row">
 		
 	<div class="col-md-3 col-xs-6">
-		<a href="#" class="thumbnail">
+		<a href="{{adsDetailsAddressPattern}}{{item._id._str}}" class="thumbnail">
 			<img  class="img-rounded" ng-src="{{item.img}}" alt="...">
 		</a>
 	</div>
@@ -30,11 +38,11 @@
 <nav class="pages">
 	<ul class="pagination">
 		<li ng-show="currentPage!=1">
-			<a href="#" aria-label="Previous"><span class="glyphicon glyphicon-chevron-left"></span></a>
+			<a href="{{adsListAddressPattern}}{{currentPage*1-1}}{{query==''?'':'?q='+query}}{{'?sortby='+sortby}}" aria-label="Previous"><span class="glyphicon glyphicon-chevron-left"></span></a>
 		</li>
 
 		<li ng-repeat="n in [] | range:lastPage" ng-class="{'active': n==currentPage}">
-			<a href="{{addressPattern}}{{n}}">
+			<a href="{{adsListAddressPattern}}{{n}}{{query==''?'':'?q='+query}}{{'?sortby='+sortby}}">
 				<span class="sr-only" ng-show="n==currentPage">
 				что тут??
 				</span>
@@ -43,7 +51,7 @@
 		</li>
 
 		<li ng-show="currentPage!=lastPage && lastPage!=0">
-			<a href="#" aria-label="Next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			<a href="{{adsListAddressPattern}}{{currentPage*1+1}}{{query==''?'':'?q='+query}}{{'?sortby='+sortby}}" aria-label="Next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 		</li>
 
 	</ul>

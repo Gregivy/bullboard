@@ -10,3 +10,5 @@ Ads.allow({
     return userId && ad.author === userId;
   }
 });
+
+Categories = new Mongo.Collection('categories');

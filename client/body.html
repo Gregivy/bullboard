@@ -1,9 +1,9 @@
-<body ng-app="bullboard" ng-controller="PageCtrl">
+<body ng-app="bullboard" ng-controller="PageCtrl" ng-strict-di="">
     <div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-4"><h1>Bullboard</h1></div>
-                <div class="col-xs-4 col-xs-offset-4 text-right">{{> loginButtons align="right" ng-class="super"}}</div>
+                <div class="col-xs-4 col-xs-offset-4 text-right"><login-buttons align="right"></login-buttons></div>
             </div>
         </div>
         <div class="container-fluid">
@@ -16,17 +16,14 @@
                     </div>
                     <div class="visible-md-block visible-lg-block">
                         <ul class="nav nav-pills nav-stacked">
-                            <li role="presentation" class="active"><a href="#">Home</a></li>
-                            <li role="presentation"><a href="#">Profile</a></li>
-                            <li role="presentation"><a href="#">Messages</a></li>
+                            <li role="presentation" ng-class="{'active': category=='all'}"><a ng-href="/ads/all/1{{'?sortby='+sortby}}{{query==''?'':'&q='+query}}">{{all}}</a></li>
+                            <li role="presentation" ng-repeat="item in menu" ng-class="{'active': item.pattern==category}"><a ng-href="/ads/{{item.pattern}}/1{{'?sortby='+sortby}}{{query==''?'':'&q='+query}}">{{item.name}}</a></li>
                         </ul>
                     </div>
                     <div class="visible-xs-block visible-sm-block">
-                        <select class="form-control" ng-model="category">
-                            <option value="pizza">Pizza</option>
-                            <option value="burger">Burger</option>
-                            <option value="tacos">Tacos</option>
-                            <option value="garlic-bread">Garlic Bread</option>
+                        <select class="form-control" ng-model="category" ng-change="changeUrl()">
+                            <option value="all">{{all}}</option>
+                            <option ng-repeat="item in menu" value="{{item.pattern}}">{{item.name}}</option>
                         </select>
                     </div>
                     </nav>

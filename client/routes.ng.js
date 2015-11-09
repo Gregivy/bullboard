@@ -11,6 +11,11 @@
             url: '/account/:id',
             templateUrl: 'client/users/view/user-account.ng.html',
             controller: 'UserAccountCtrl'
+        })
+        .state('ad', {
+            url: '/ad/:id',
+            templateUrl: 'client/ads/view/ad-view.ng.html',
+            controller: 'AdDetailsCtrl'
         });
     $urlRouterProvider.otherwise("/ads/all/1");
 });
