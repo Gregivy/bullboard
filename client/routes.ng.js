@@ -14,7 +14,7 @@
         })
         .state('ad', {
             url: '/ad/:id',
-            templateUrl: 'client/ads/view/ad-view.ng.html',
+            templateUrl: 'client/ads/view/ad.ng.html',
             controller: 'AdDetailsCtrl'
         });
     $urlRouterProvider.otherwise("/ads/all/1");
