@@ -16,26 +16,54 @@
 </div>
 
 <div ng-repeat="item in ads"  ng-class="{'checked':item.checked}">
-	<div class="row">
+	
+	<div class="row la">
 		
-	<div class="col-md-3 col-xs-6">
+	<div class="col-md-2 col-xs-3 ">
 		<a href="{{adsDetailsAddressPattern}}{{item._id._str}}" class="thumbnail">
-			<img  class="img-rounded" ng-src="{{item.img}}" alt="...">
+			<img  class="img-rounded" ng-src="/img/pic2.jpg" alt="...">
 		</a>
 	</div>
 	
-	<div class="col-md-6 col-xs-6">
-		<p>
-			<a  ng-href="#"><p class="lead">{{item.name}}</p></a>
-		</p>
-		<hr>
-		<dl><dt>Описание: </dt> <tt> {{item.desc}}</tt></dl>
-		<dl class="dl-horizontal"> <dt>Цена: </dt> <tt> {{item.price}}руб.</tt></dl>
-		<dl class="dl-horizontal"> <dt>Дата: </dt> <tt> {{item.date}}</tt></dl>
+	<div class="col-md-10 col-xs-9">
+		<p class="first">
+			<div class="row">
+				<div class="col-md-9 col-xs-12 col-lg-9">
+			<a  ng-href="#"><span class="lead ">{{item.name}}</span></a>
+				</div>
+				<div class="col-md-3  col-xs-12 col-lg-offset-1 col-lg-2">
+			<kbd class="price">{{item.price}}<span class="glyphicon glyphicon-ruble" aria-hidden="true"></span> </kbd>
+				</div>
+		
+			</div>
+			</p>
+		<hr class="bord">
+			
+				
+				<div class="name">
+					<p class="text-muted">{{item.date}}
+					<div class="col-xs-12">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				
+					
+						<a  class="auth" href="#">{{item.author}}</a>
+					
+				</div>
+					</p>
+				
+			</div>
+			
+			<p class="text-muted tx">{{item.desc}}</p>
+			
+			
+				
+			
 	</div>
 
 </div>
+
 </div>
+
 <nav class="pages">
 	<ul class="pagination">
 		<li ng-show="currentPage!=1">

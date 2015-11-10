@@ -5,13 +5,44 @@
     top:0;
     z-index:100;
 }
-.imges{
-height: 100px;
-width: 100px;
-}
+
 .name{
 	cursor: pointer;
+	text-align: left;
+
 }
 .pages{
 	text-align: center;
+}
+.bord{
+	border-color: grey;
+	margin: 0px;
+	
+	border-radius: 50%;
+        
+}
+.first{
+	margin-bottom: 1px;
+}
+.price{
+	color: #E8E8E8;
+	font-size: 20px;
+	background-color: #5cb85c;
+	
+}
+.block{
+	display: block;
+}
+.la{
+	box-shadow: 2px 2px 5px 0px gray;
+	margin: 20px;
+	background-color: #E8E8E8;
+}
+.tx{
+	    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	    font-size: 16px;
+}
+.auth{
+	    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	    color: #008B8B;
 }
