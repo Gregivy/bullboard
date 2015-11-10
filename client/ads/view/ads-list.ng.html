@@ -24,10 +24,11 @@
 		</a>
 	</div>
 	
-	<div class="col-md-9 col-xs-6">
+	<div class="col-md-6 col-xs-6">
 		<p>
-			<a  ng-href="#">{{item.author}}</a>: {{item.name}}
+			<a  ng-href="#"><p class="lead">{{item.name}}</p></a>
 		</p>
+		<hr>
 		<dl><dt>Описание: </dt> <tt> {{item.desc}}</tt></dl>
 		<dl class="dl-horizontal"> <dt>Цена: </dt> <tt> {{item.price}}руб.</tt></dl>
 		<dl class="dl-horizontal"> <dt>Дата: </dt> <tt> {{item.date}}</tt></dl>
@@ -38,20 +39,20 @@
 <nav class="pages">
 	<ul class="pagination">
 		<li ng-show="currentPage!=1">
-			<a href="{{adsListAddressPattern}}{{currentPage*1-1}}{{query==''?'':'?q='+query}}{{'?sortby='+sortby}}" aria-label="Previous"><span class="glyphicon glyphicon-chevron-left"></span></a>
+			<a href="{{adsListAddressPattern}}{{currentPage*1-1}}{{'?sortby='+sortby}}{{query==''?'':'&q='+query}}" aria-label="Previous"><span class="glyphicon glyphicon-chevron-left"></span></a>
 		</li>
 
 		<li ng-repeat="n in [] | range:lastPage" ng-class="{'active': n==currentPage}">
-			<a href="{{adsListAddressPattern}}{{n}}{{query==''?'':'?q='+query}}{{'?sortby='+sortby}}">
+			<a href="{{adsListAddressPattern}}{{n}}{{'?sortby='+sortby}}{{query==''?'':'&q='+query}}">
 				<span class="sr-only" ng-show="n==currentPage">
-				что тут??
+				
 				</span>
 				{{n}}
 			</a>
 		</li>
 
 		<li ng-show="currentPage!=lastPage && lastPage!=0">
-			<a href="{{adsListAddressPattern}}{{currentPage*1+1}}{{query==''?'':'?q='+query}}{{'?sortby='+sortby}}" aria-label="Next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			<a href="{{adsListAddressPattern}}{{currentPage*1+1}}{{'?sortby='+sortby}}{{query==''?'':'&q='+query}}" aria-label="Next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 		</li>
 
 	</ul>
