@@ -1,14 +1,13 @@
 <div class="row">
-    <div class="col-md-4">
-        <H3>Личный кабинет <span ng-bind={{user}}></span></H3>
+    <div class="col-md-4 col-xs-12 col-lg-4">
+        <H3>Личный кабинет {{user}}</H3>
         
     </div>
 	
-    <div class=" col-md-2 col-md-offset-6 btn">
-       <button class="btn btn-mini" ng-click="" ng-init="">
-      <p class="text-center label label-success">Добавить объявление</p>
-	  <a class="btn" href="#"><i class="icon-pencil"></i></a>
-    </button>
+    <div class=" col-md-3 col-md-offset-5 col-xs-12  col-lg-3 col-lg-offset-5">
+       <button class="btn btn-primary" ng-click="" ng-init="">
+			Добавить объявление
+		</button>
     </div>
 </div>	
    
@@ -17,33 +16,54 @@
     
      
 
-	<table class="table table-responsive">
+	<table class="table table-responsive table-striped table-hover table-condensed">
     <thead>
         <tr>
-            <th>Название</th>
-            <th>Дата добавления</th>
-            <th>Категории</th>
-            <th>кнопка</th>
+			<th class="col-md-1" style="width:10%"></th>
+            <th class="col-md-5">Название</th>
+            <th class="col-md-2">
+				<button ng-click="" type="button" class="btn btn-default btn-md">
+					<span>Дата добавления</span>
+					<span class="glyphicon glyphicon-sort"></span>
+				</button>	
+			</th>
+            <th class="col-md-2">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<span>Категории</span>
+						<span class="glyphicon glyphicon-arrow-down"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li ng-repeat="ad in ads"><a href="#">{{ad.category}}</a></li>
+					</ul>
+				</div>
+		
+			
+			</th>
+            <th class="col-md-2">	</th>
 			
         </tr>
+	</thead>
+	<tbody>
 		<tr ng-repeat="ad in ads">
+			<td><img ng-src="{{ad.img}}" class="img-rounded img-responsive" ></td>
 			<td>{{ad.name}}</td>
             <td>{{ad.date}}</td>
             <td>{{ad.category}}}}</td>
             <td>
-				<button ng-click="" type="button" class="btn btn-default btn-lg">
+				<button ng-click="" type="button" class="btn btn-default">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</button>
-				<button ng-click="" type="button" class="btn btn-default btn-lg">
+				<button ng-click="" type="button" class="btn btn-default btn-md">
 					<span class="glyphicon glyphicon-trash"></span>
 				</button>
 			</td>
 			
 		 </tr>
-    </thead>
+    
      
-	
-</table>	
+	</tbody>
+	</table>	
  
     
 	
