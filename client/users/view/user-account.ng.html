@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-4">
+        <H3>Личный кабинет <span ng-bind={{user}}></span></H3>
+        
+    </div>
+	
+    <div class=" col-md-2 col-md-offset-6 btn">
+       <button class="btn btn-mini" ng-click="" ng-init="">
+      <p class="text-center label label-success">Добавить объявление</p>
+	  <a class="btn" href="#"><i class="icon-pencil"></i></a>
+    </button>
+    </div>
+</div>	
+   
+         <h4>Мои объявления</h4>
+       
+    
+     
+
+	<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Дата добавления</th>
+            <th>Категории</th>
+            <th>кнопка</th>
+			
+        </tr>
+		<tr ng-repeat="ad in ads">
+			<td>{{ad.name}}</td>
+            <td>{{ad.date}}</td>
+            <td>{{ad.category}}}}</td>
+            <td>
+				<button ng-click="" type="button" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+				<button ng-click="" type="button" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</td>
+			
+		 </tr>
+    </thead>
+     
+	
+</table>	
+ 
+    
+	
