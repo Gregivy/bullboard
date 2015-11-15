@@ -27,7 +27,7 @@
       resolve: {
         "logout": function($meteor, $state) {
           return $meteor.logout().then(function(){
-            //$state.go('ads');
+            $state.go('');
           }, function(err){
             console.log('logout error - ', err);
           });

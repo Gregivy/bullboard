@@ -20,7 +20,7 @@ twbs:bootstrap
 angularui:angular-ui-bootstrap
 angularui:angular-ui-router
 tmeasday:publish-counts
-accounts-password
-accounts-ui
-dotansimha:accounts-ui-angular
 fezvrasta:bootstrap-material-design
+accounts-password
+accounts-ui-unstyled
+dotansimha:accounts-ui-angular

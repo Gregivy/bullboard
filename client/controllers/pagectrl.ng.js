@@ -21,6 +21,10 @@ angular.module('bullboard').controller('PageCtrl',function ($scope, $meteor, $st
         $location.path('/ads/'+$scope.category+'/1');
     };
     $scope.go = function ( path ) {
+        $location.search ("");
         $location.path( path );
     };
+    $scope.logout = function () {
+        $meteor.logout();
+    }
 });

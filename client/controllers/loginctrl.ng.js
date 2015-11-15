@@ -1,5 +1,10 @@
 angular.module('bullboard').controller('LogInCtrl',function ($scope, $meteor, $stateParams, $location) {
     $scope.register = false;
+    $scope.patterns = {
+        password : /^(?=.*\d)[0-9a-zA-Z]{5,20}$/,
+        login: /^[0-9a-zA-Z]{5,20}$/,
+        usrname:  /^[а-яА-ЯёЁa-zA-Z0-9\s]+$/
+    };
     $scope.enter = function () {
         $meteor.loginWithPassword( $scope.login, $scope.password );
     };
@@ -7,14 +12,21 @@ angular.module('bullboard').controller('LogInCtrl',function ($scope, $meteor, $s
         login:false,email:false,password:false,name:false,
         get: function() {return this.login || this.email || this.password || this.name;}
     };
-    $scope.reg = function () {
-        if (!$scope.hasErrors.get()) {
+    $scope.submit = function () {
+        if ($scope.register) {
             $meteor.createUser({
                 username:$scope.login,
                 email:$scope.email,
                 password: $scope.password,
-                profile: {name: $scope.name}
+                profile: {name: $scope.usrname}
+            }).then(function() {$scope.go("/ad/");}, function(err) {$scope.accountsError=err.reason;});
+        } else {
+            $meteor.loginWithPassword($scope.login, $scope.password).then(function() {
+                alert();
+                $scope.go("/ad/");
+            },function(err) {
+                $scope.accountsError=err.reason;
             });
-        } else {alert();}
+        }
     };
 });
