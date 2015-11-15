@@ -3,7 +3,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-4"><h1>Bullboard</h1></div>
-                <div class="col-xs-4 col-xs-offset-4 text-right"><login-buttons align="right"></login-buttons></div>
+                <div class="col-xs-8 text-right">
+                    <button class="btn btn-info" ng-click="go('/login')" ng-hide="$root.currentUser">Добавить</button>
+                    <button class="btn btn-info" ng-click="go('/ad/new')" ng-show="$root.currentUser">Добавить</button>
+                    <button class="btn btn-info" ng-click="go('/account/')" ng-show="$root.currentUser">
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="container-fluid">

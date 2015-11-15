@@ -29,7 +29,7 @@
 		<p class="first">
 			<div class="row">
 				<div class="col-md-9 col-xs-12 col-lg-9">
-			<a  ng-href="#"><span class="lead ">{{item.name}}</span></a>
+			<a  ng-href="{{adsDetailsAddressPattern}}{{item._id._str}}"><span class="lead ">{{item.name}}</span></a>
 				</div>
 				<div class="col-md-3  col-xs-12 col-lg-offset-1 col-lg-2">
 			<kbd class="price">{{item.price}}<span class="glyphicon glyphicon-ruble" aria-hidden="true"></span> </kbd>
@@ -46,7 +46,7 @@
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				
 					
-						<a  class="auth" href="#">{{item.author}}</a>
+						<a  class="auth" href="{{accountAddressPattern}}{{item._id._str}}">{{item.author}}</a>
 					
 				</div>
 					</p>

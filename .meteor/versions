@@ -2,9 +2,11 @@ accounts-base@1.2.2
 accounts-password@1.1.4
 accounts-ui@1.1.6
 accounts-ui-unstyled@1.1.8
-angular@1.2.0
-angular-meteor-data@0.0.4
+angular@1.2.2
+angular-blaze-templates-compiler@0.0.1
+angular-meteor-data@0.0.6
 angular-templates@0.0.1
+angular-with-blaze@1.2.1
 angular:angular@1.4.7
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
@@ -84,7 +86,7 @@ tracker@1.0.9
 twbs:bootstrap@3.3.5
 ui@1.0.8
 underscore@1.0.4
-urigo:angular-blaze-template@0.1.1
+urigo:angular-blaze-template@0.2.0
 url@1.0.5
 webapp@1.2.3
 webapp-hashing@1.0.5

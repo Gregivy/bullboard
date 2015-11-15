@@ -9,6 +9,7 @@ angular.module('bullboard').controller('AdsListCtrl', function ($scope, $meteor,
     $scope.$parent.category = $scope.category;
     $scope.adsListAddressPattern = "ads/"+$scope.category+"/";
     $scope.adsDetailsAddressPattern = "ad/"
+    $scope.accountAddressPattern = "account/"
     $scope.currentPage = $stateParams.pagenumber;
     $scope.ads = $meteor.collection(function() {
         //return Ads.find($scope.$parent.query==""?{category:$scope.category}:{category:$scope.category,$text:{$search:$scope.$parent.getReactively('query')}},{

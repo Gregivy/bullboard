@@ -19,5 +19,8 @@ angular.module('bullboard').controller('PageCtrl',function ($scope, $meteor, $st
     });
     $scope.changeUrl = function() {
         $location.path('/ads/'+$scope.category+'/1');
-    }
+    };
+    $scope.go = function ( path ) {
+        $location.path( path );
+    };
 });

@@ -15,11 +15,11 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 
 angular
-accounts-ui
-accounts-password
 urigo:angular-blaze-template
 twbs:bootstrap
 angularui:angular-ui-bootstrap
 angularui:angular-ui-router
 tmeasday:publish-counts
+accounts-password
+accounts-ui
 dotansimha:accounts-ui-angular

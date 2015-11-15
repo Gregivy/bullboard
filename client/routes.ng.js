@@ -16,6 +16,23 @@
             url: '/ad/:id',
             templateUrl: 'client/ads/view/ad.ng.html',
             controller: 'AdDetailsCtrl'
-        });
+        })
+        .state('login', {
+            url: '/login',
+            templateUrl: 'client/view/login.ng.html',
+            controller: 'LogInCtrl'
+        })
+      .state('logout', {
+      url: '/logout',
+      resolve: {
+        "logout": function($meteor, $state) {
+          return $meteor.logout().then(function(){
+            //$state.go('ads');
+          }, function(err){
+            console.log('logout error - ', err);
+          });
+        }
+      }
+    });
     $urlRouterProvider.otherwise("/ads/all/1");
 });
