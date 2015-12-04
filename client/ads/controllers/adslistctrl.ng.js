@@ -2,9 +2,12 @@ angular.module('bullboard').controller('AdsListCtrl', function ($scope, $meteor,
     //var searchObj = $location.search();
     //console.log(searchObj);
     //$scope.$parent.query = searchObj==null || searchObj.q==null?$scope.$parent.query:searchObj.q;
+    $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
+    $scope.getMainPhoto = function (id) {
+        return Images.findOne(id).url;
+    };
     $scope.category = $stateParams.category;
     console.log($scope.category);
-    $scope.categoryName = $scope.category!="all"?Categories.find({pattern:$scope.category}).fetch()[0]["name"]:$scope.all;
     $scope.sort = {date: -1};
     $scope.$parent.category = $scope.category;
     $scope.adsListAddressPattern = "ads/"+$scope.category+"/";
@@ -19,7 +22,7 @@ angular.module('bullboard').controller('AdsListCtrl', function ($scope, $meteor,
     });
     $scope.sortby = $location.search().sortby?$location.search().sortby:"date";
     $meteor.autorun($scope, function() {
-        $meteor.subscribe('ads', {
+        $scope.$meteorSubscribe('ads', {
             skip:10*($scope.getReactively('currentPage')-1),
             limit:10,
             sort: $scope.getReactively('sort')
@@ -29,6 +32,12 @@ angular.module('bullboard').controller('AdsListCtrl', function ($scope, $meteor,
             $scope.lastPage = Math.ceil($scope.totalPages.count/10);
         });
     });
+    $scope.$meteorSubscribe('categories').then(function() {
+        $scope.categoryName = $scope.category!="all"?Categories.findOne({pattern:$scope.category})["name"]:$scope.all;
+        console.log($scope.categoryName);
+    });
+    //$scope.categoryName = $scope.category!="all"?Categories.findOne({pattern:$scope.category})["name"]:$scope.all;
+    //$scope.categoryName = $scope.category!="all"?$scope.menu[$scope.menu.indexOf(:$scope.all;
     $scope.$watch('sortby', function(term){
         $location.search('sortby', term);
         if ($scope.sortby) {
@@ -39,6 +48,10 @@ angular.module('bullboard').controller('AdsListCtrl', function ($scope, $meteor,
             else if ($scope.sortby=="pricedown") $scope.sort = {price:-1}
         }
     });
+    $scope.getMainPhoto = function (id) {
+        if (id) return Images.findOne(id).url()
+        else return "./noimage.png";
+    };
     //$scope.lastPage = Math.ceil($scope.ads.length/10)+1;
     //$scope.query = "";
 });

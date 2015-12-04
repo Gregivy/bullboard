@@ -3,7 +3,17 @@
 }
 #menu.affix {
     top:0;
+    left:0;
     z-index:100;
+    background-color: #eeeeee;
+}
+
+@media (max-width:991px) { 
+    #menu.affix {
+        width:100%;
+        padding:0px;
+        margin:0px;
+    }
 }
 
 .name{
@@ -25,7 +35,7 @@
 	margin-bottom: 1px;
 }
 .price{
-	color: #E8E8E8;
+	color: white;
 	font-size: 20px;
 	background-color: rgb(0, 150, 136);
 	
@@ -36,7 +46,7 @@
 .la{
 	box-shadow: 2px 2px 5px 0px gray;
 	margin: 20px;
-	background-color: #E8E8E8;
+	background-color: white;
 }
 .tx{
 	    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -45,4 +55,53 @@
 .auth{
 	    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	    color: #008B8B;
+}
+#menu {
+    //background-color: floralwhite;
+}
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    height: 165px;
+    text-align: center;
+    padding-top: 45px;
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
+.dragover-err {
+    border: 5px dashed red;
+}
+.mainpic {
+    background-color: chartreuse;
+}
+.fade {
+    opacity: 1;
+}
+.fade.ng-enter,
+.fade.ng-leave {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.fade.ng-enter {
+    opacity: 0;
+}
+.fade.ng-enter-active {
+    opacity: 1;
+}
+.fade.ng-leave {
+    opacity: 1;
+}
+.fade.ng-leave-active {
+    opacity: 0;
+}
+.imgloadingthumb {
+    width:100px;
+    height:100px;
+    float:left;
+    background-size: cover !important;
+    -webkit-background-size: cover !important;
+    -o-background-size: cover !important;
+    -moz-background-size: cover !important;
 }

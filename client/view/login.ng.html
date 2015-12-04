@@ -28,7 +28,7 @@
   <div class="form-group" ng-show="register" ng-class="{'has-error':myForm.usrname.$error.pattern || myForm.usrname.$error.minlength || myForm.usrname.$error.maxlength}">
     <label for="inputName" class="col-sm-2 control-label">ФИО</label>
     <div class="col-sm-5">
-      <input type="text" ng-required="register" class="form-control" name="usrname" placeholder="" ng-pattern="patterns.usrname" ng-model="name" ng-minlength="5" ng-maxlength="30">
+      <input type="text" ng-required="register" class="form-control" name="usrname" placeholder="" ng-pattern="patterns.usrname" ng-model="usrname" ng-minlength="5" ng-maxlength="30">
       <div role="alert" ng-show="register">
          <span class="text-danger" ng-show="myForm.usrname.$error.pattern">
         ФИО должно быть состоять только из букв!</span>

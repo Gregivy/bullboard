@@ -11,20 +11,25 @@ angular.module('bullboard').controller('PageCtrl',function ($scope, $meteor, $st
   //  $meteor.subscribe('categories').then(function() {
 //        console.log($scope.menu[0].name);
     //});
-    $scope.$meteorSubscribe('categories');
-    $scope.menu = $meteor.collection(function() {
-        return Categories.find({},{
-            sort: {name:1}
+    $scope.$meteorSubscribe('categories').then(function() {
+        $scope.menu = $meteor.collection(function() {
+            return Categories.find({},{
+                sort: {name:1}
+            });
         });
     });
     $scope.changeUrl = function() {
-        $location.path('/ads/'+$scope.category+'/1');
+        if (!$scope.category) $scope.category = "all";
+        $location.path('/ads/'+$scope.category+'/1?sortby=date');
     };
     $scope.go = function ( path ) {
         $location.search ("");
+        $scope.category = null;
         $location.path( path );
     };
     $scope.logout = function () {
         $meteor.logout();
-    }
+    };
+    //$scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
+
 });

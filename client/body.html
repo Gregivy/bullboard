@@ -4,10 +4,11 @@
             <div class="row">
                 <div class="col-xs-4"><h1>Bullboard</h1></div>
                 <div class="col-xs-8 text-right">
-
-                    <button class="btn btn-info" ng-click="go('/login')" ng-hide="$root.currentUser">Добавить</button>
-                    <button class="btn btn-info" ng-click="go('/ad/new')" ng-show="$root.currentUser">Добавить</button>
-                    <button class="btn btn-info" ng-click="go('/account/')" ng-show="$root.currentUser">
+                    <button class="btn btn-info" ng-click="go('/login')" ng-hide="$root.currentUser">Войти</button>
+                    <button class="btn btn-info" ng-click="go('/ad-new')" ng-show="$root.currentUser">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-info" ng-click="go('/account/'+$root.currentUser.username)" ng-show="$root.currentUser">
                         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                     </button>
                     <button class="btn btn-info" ng-click="logout()" ng-show="$root.currentUser">
@@ -21,13 +22,13 @@
                 <div class="col-md-3 col-xs-12">
                     <nav data-spy="affix" data-offset-top="69" id="menu">
                     <div class="form-group has-feedback">
-                        <input type="text" class="form-control" placeholder="Искать в категории..." ng-model="query">
+                        <form ng-submit="changeUrl()"><input type="text" class="form-control" placeholder="Искать в категории..." ng-model="query"></form>
                         <i class="glyphicon glyphicon-search form-control-feedback"></i>
                     </div>
                     <div class="visible-md-block visible-lg-block">
                         <ul class="nav nav-pills nav-stacked">
-                            <li role="presentation" ng-class="{'active': category=='all'}"><a ng-href="/ads/all/1{{'?sortby='+sortby}}{{query==''?'':'&q='+query}}">{{all}}</a></li>
-                            <li role="presentation" ng-repeat="item in menu" ng-class="{'active': item.pattern==category}"><a ng-href="/ads/{{item.pattern}}/1{{'?sortby='+sortby}}{{query==''?'':'&q='+query}}">{{item.name}}</a></li>
+                            <li role="presentation" ng-class="{'active': category=='all'}"><a ng-href="/ads/all/1?sortby={{sortby}}{{query==''?'':'&q='+query}}">{{all}}</a></li>
+                            <li role="presentation" ng-repeat="item in menu" ng-class="{'active': item.pattern==category}"><a ng-href="/ads/{{item.pattern}}/1?sortby={{sortby}}{{query==''?'':'&q='+query}}">{{item.name}}</a></li>
                         </ul>
                     </div>
                     <div class="visible-xs-block visible-sm-block">
@@ -39,9 +40,16 @@
                     </nav>
                 </div>
                 <div class="col-md-9 col-xs-12">
-                    <div ui-view></div>
+                    <div ui-view class="fade"></div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<template name="progress">
+    {{#each images}}
+  {{#unless this.isUploaded}}
+  {{> FS.UploadProgressBar}}
+  {{/unless}}
+{{/each}}
+</template>

@@ -1,4 +1,5 @@
-angular.module('bullboard').controller('LogInCtrl',function ($scope, $meteor, $stateParams, $location) {
+angular.module('bullboard').controller('LogInCtrl',function ($scope, $meteor, $stateParams, $location, $window, $rootScope) {
+    //if ($rootScope.currentUser) $window.history.back();
     $scope.register = false;
     $scope.patterns = {
         password : /^(?=.*\d)[0-9a-zA-Z]{5,20}$/,
@@ -19,11 +20,10 @@ angular.module('bullboard').controller('LogInCtrl',function ($scope, $meteor, $s
                 email:$scope.email,
                 password: $scope.password,
                 profile: {name: $scope.usrname}
-            }).then(function() {$scope.go("/ad/");}, function(err) {$scope.accountsError=err.reason;});
+            }).then(function() {$window.history.back();}, function(err) {$scope.accountsError=err.reason;});
         } else {
             $meteor.loginWithPassword($scope.login, $scope.password).then(function() {
-                alert();
-                $scope.go("/ad/");
+                $window.history.back();
             },function(err) {
                 $scope.accountsError=err.reason;
             });

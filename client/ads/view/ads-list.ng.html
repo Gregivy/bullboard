@@ -14,14 +14,14 @@
         </select>
 	</p>
 </div>
-
+<div ng-show="ads.length==0">Ничего не найдено!</div>
 <div ng-repeat="item in ads"  ng-class="{'checked':item.checked}">
 	
 	<div class="row la">
 		
 	<div class="col-md-2 col-xs-12 ">
-		<a href="{{adsDetailsAddressPattern}}{{item._id._str}}" class="thumbnail">
-			<img  class="img-rounded" ng-src="/img/pic2.jpg" alt="...">
+		<a href="{{adsDetailsAddressPattern}}{{item._id}}" class="thumbnail">
+			<img  class="img-rounded" ng-src="{{getMainPhoto(item.images[0])}}" alt="...">
 		</a>
 	</div>
 	
@@ -29,7 +29,7 @@
 		<p class="first">
 			<div class="row">
 				<div class="col-md-9 col-xs-12 col-lg-9">
-			<a  ng-href="{{adsDetailsAddressPattern}}{{item._id._str}}"><span class="lead ">{{item.name}}</span></a>
+			<a  ng-href="{{adsDetailsAddressPattern}}{{item._id}}"><span class="lead ">{{item.name}}</span></a>
 				</div>
 				<div class="col-md-3  col-xs-12 col-lg-offset-1 col-lg-2">
 			<kbd class="price">{{item.price}}<span class="glyphicon glyphicon-ruble" aria-hidden="true"></span> </kbd>
@@ -41,12 +41,12 @@
 			
 				
 				<div class="name">
-					<p class="text-muted">{{item.date}}
+					<p class="text-muted">{{item.date | date:'dd.MM.yyyy HH:mm'}}
 					<div class="col-xs-12">
 						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				
 					
-						<a  class="auth" href="{{accountAddressPattern}}{{item._id._str}}">{{item.author}}</a>
+						<a  class="auth" href="{{accountAddressPattern}}{{item.author.login}}">{{item.author.name}}</a>
 					
 				</div>
 					</p>

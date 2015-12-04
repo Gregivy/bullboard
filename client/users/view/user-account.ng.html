@@ -1,26 +1,43 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Вы действительно хотите удалить это объявление?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Нет</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteAd()">Да</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-show="error"><h3>{{error}}</h3></div>
+<div ng-show="!error">
 <div class="row">
     <div class="col-md-4 col-xs-12 col-lg-4">
-        <H3>Личный кабинет {{user}}</H3>
-        
+        <h3 ng-hide="personalPage">Личный кабинет {{user}}</h3>
+        <h3 ng-show="personalPage && $root.currentUser">Ваш личный кабинет, {{user}}</h3>
     </div>
 	
     <div class=" col-md-3 col-md-offset-5 col-xs-12  col-lg-3 col-lg-offset-5">
 
     </div>
 </div>	
-   
-         <h4>Мои объявления</h4>
-       
-    
-     
-
+         <h4>Список объявлений</h4>
 	<table class="table table-responsive table-striped table-hover table-condensed">
     <thead>
         <tr>
 			<th class="col-md-1" style="width:10%"></th>
-            <th class="col-md-5">Название</th>
+            <th class="col-md-5">
+                <button ng-click="sortby('name')" type="button" class="btn btn-default btn-md">
+					<span>Название</span>
+					<span class="glyphicon glyphicon-sort"></span>
+				</button>	
+            </th>
             <th class="col-md-2">
-				<button ng-click="" type="button" class="btn btn-default btn-md">
+				<button ng-click="sortby('date')" type="button" class="btn btn-default btn-md">
 					<span>Дата добавления</span>
 					<span class="glyphicon glyphicon-sort"></span>
 				</button>	
@@ -28,31 +45,32 @@
             <th class="col-md-2">
 				<div class="btn-group">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						<span>Категории</span>
+						<span>{{catName}}</span>
 						<span class="glyphicon glyphicon-arrow-down"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li ng-repeat="ad in ads"><a href="#">{{ad.category}}</a></li>
+                        <li><a href="#" ng-click="showCat('all','Все категории')">Все категории</a></li>
+						<li ng-repeat="cat in menu"><a href="#" ng-click="showCat(cat.pattern,cat.name)">{{cat.name}}</a></li>
 					</ul>
 				</div>
 		
 			
 			</th>
-            <th class="col-md-2">	</th>
+            <th class="col-md-2" ng-show="personalPage && $root.currentUser">	</th>
 			
         </tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="ad in ads">
-			<td><img ng-src="{{ad.img}}" class="img-rounded img-responsive" ></td>
-			<td>{{ad.name}}</td>
-            <td>{{ad.date}}</td>
-            <td>{{ad.category}}}}</td>
-            <td>
-				<button ng-click="" type="button" class="btn btn-default">
+			<td><img ng-src="{{getMainPhoto(ad.images[0])}}" class="img-rounded img-responsive" ></td>
+            <td><a ng-href="/ad/{{ad._id}}">{{ad.name}}</a></td>
+            <td>{{ad.date | date:'dd.MM.yyyy HH:mm'}}</td>
+            <td><a ng-href="/ads/{{ad.category.pattern}}/1?sortby=date">{{ad.category.name}}</a></td>
+            <td ng-show="personalPage && $root.currentUser">
+				<a ng-href="{{'/ad/'+ad._id+'?edit'}}" class="btn btn-default">
 					<span class="glyphicon glyphicon-pencil"></span>
-				</button>
-				<button ng-click="" type="button" class="btn btn-default btn-md">
+				</a>
+				<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#myModal" ng-click="trydelete(ad._id)">
 					<span class="glyphicon glyphicon-trash"></span>
 				</button>
 			</td>
@@ -62,6 +80,5 @@
      
 	</tbody>
 	</table>	
- 
-    
+</div>
 	
