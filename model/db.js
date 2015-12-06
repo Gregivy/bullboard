@@ -24,7 +24,8 @@ Schemas.Ad = new SimpleSchema({
     },
     price: {
         type: Number,
-        label: "Price"
+        label: "Price",
+        min: 0
     },
     "category.pattern": {
         type: String,

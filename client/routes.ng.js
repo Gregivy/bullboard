@@ -7,12 +7,19 @@ angular.module("bullboard").run(function ($rootScope, $state, $window) {
     }
   });
   $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, error) {
-      console.log(toState);
-      if (fromState.name=="ads" || fromState.name=="account" ) {
+      if (toState.resolve) {
+        $rootScope.showSpinner = false;
+      }
+      if (fromState.name=="ads") {
         $rootScope.$previousState = fromState;
         $rootScope.$previousStateParams = fromParams;
       }
       if (toState.data && toState.data.noauth && $rootScope.currentUser) $state.go('ads',{category:"all",pagenumber:"1"});
+  });
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, error) {
+      if (toState.resolve) {
+        $rootScope.showSpinner = true;
+      }
   });
 });
 

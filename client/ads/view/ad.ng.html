@@ -54,10 +54,13 @@
 		</a>		
 	       </div>
             <div ng-show="$root.currentUser && $root.currentUser._id==ad.author.id">
-            <div ngf-drop ngf-select ngf-change="addImages($files)" ngf-keep="distinct" class="drop-box" 
+            <div ngf-drop ngf-select ngf-change="addImages($files)" ngf-keep="distinct" class="drop-box hidden-xs hidden-sm" 
                  ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', pattern:'image/jpeg'}" ngf-multiple="true" ngf-allow-dir="true"
                  accept="image/jpeg" ngf-accept="'image/jpeg'" ngf-capture="'camera'"
                  ngf-valid-only>Перетащите сюда изображения для объявления<br>или<br>нажмите по этой области</div>
+                <div class="btn btn-primary visible-xs-block visible-sm-block" ngf-select ngf-change="addImages($files)" ngf-keep="distinct"  ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', pattern:'image/jpeg'}" ngf-multiple="true" ngf-allow-dir="true"
+                 accept="image/jpeg" ngf-accept="'image/jpeg'" ngf-capture="'camera'"
+                 ngf-valid-only>загрузить изображения</div>
                 <div class="form-group">
         <div class="fixedheight" sv-root sv-part="adImages" sv-on-sort="replacePrevs($indexFrom,$indexTo)">
             <div sv-element ng-repeat="img in adImages" class="thumbnail imgloadingthumb" ng-class="{'mainpic':$index===0}" ng-style="{'background':'url('+img+') 100% 100% no-repeat'}">
@@ -87,7 +90,7 @@
 				<div class="lead">
                     <p editable-textarea="ad.desc" e-rows="7" e-cols="40">{{ad.desc}}</p>		
 				</div>
-            <comments-box id="{{adid}}"></comments-box>
+            <blaze-template name="commentsBox" id="{{adid}}"></blaze-template>
 		</div>
 	</div>	
 </div>

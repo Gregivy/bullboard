@@ -1,4 +1,4 @@
-angular.module('bullboard').controller('PageCtrl',function ($scope, $meteor, $stateParams, $location) {
+angular.module('bullboard').controller('PageCtrl',function ($scope, $meteor, $stateParams, $location, $rootScope) {
     //$scope.sortby = "date";
     $scope.$watch(function () { return $location.search(); }, function() {
       $scope.query = $location.search()['q'] || "";
@@ -12,7 +12,7 @@ angular.module('bullboard').controller('PageCtrl',function ($scope, $meteor, $st
 //        console.log($scope.menu[0].name);
     //});
     $scope.$meteorSubscribe('categories').then(function() {
-        $scope.menu = $meteor.collection(function() {
+        $scope.menu = $scope.$meteorCollection(function() {
             return Categories.find({},{
                 sort: {name:1}
             });
@@ -20,7 +20,8 @@ angular.module('bullboard').controller('PageCtrl',function ($scope, $meteor, $st
     });
     $scope.changeUrl = function() {
         if (!$scope.category) $scope.category = "all";
-        $location.path('/ads/'+$scope.category+'/1?sortby=date');
+        $location.path('/ads/'+$scope.category+'/1');
+        $location.search('sortby','date');
     };
     $scope.go = function ( path ) {
         $location.search ("");
@@ -31,5 +32,6 @@ angular.module('bullboard').controller('PageCtrl',function ($scope, $meteor, $st
         $meteor.logout();
     };
     //$scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
+    //$scope.showSpinner = $rootScope;
 
 });

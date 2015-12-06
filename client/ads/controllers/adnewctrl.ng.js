@@ -1,8 +1,8 @@
-angular.module('bullboard').controller('AdNewCtrl', function ($scope, $meteor, $location, $stateParams, $rootScope) {
+angular.module('bullboard').controller('AdNewCtrl', function ($scope, $meteor, $location, $stateParams, $rootScope, $timeout) {
     $rootScope.$watch('currentUser', function() {
         if (!$rootScope.currentUser) $scope.go("/login");
     });
-    $scope.images = $meteor.collectionFS(Images, false, Images);
+    $scope.images = $meteor.collectionFS(Images, false, Images).subscribe("images");
     $scope.imgSrc = [];
     $scope.loading = false;
     $scope.loadedImage = 0;
@@ -10,14 +10,13 @@ angular.module('bullboard').controller('AdNewCtrl', function ($scope, $meteor, $
     $scope.submit = function () {
         $meteor.call('newAd', $scope.name, $scope.desc, $scope.price, $scope.category).then(function(data){
             if ($scope.newImages.length==0) {$scope.go("/ad/"+data)} else {
+                $rootScope.showSpinner = true;
                 $scope.loading = true;
                 for (var i = 0; i<$scope.newImages.length; i++) {
                     console.log(i);
                     $scope.images.save($scope.newImages[i]).then(function(res){
+                        $scope.checkLoading(res,data);
                         console.log(res[0]._id._id, data);
-                        $scope.loadedImage++;
-                        $meteor.call('addPic', res[0]._id._id, data);
-                        if ($scope.loadedImage==$scope.newImages.length) $scope.go("/ad/"+data);
                     });
                 };
             };
@@ -54,6 +53,19 @@ angular.module('bullboard').controller('AdNewCtrl', function ($scope, $meteor, $
                 }
             };
         };
+    };
+    $scope.checkLoading = function(res,data) {
+        var img = Images.findOne(res[0]._id._id);
+        if (img.url()!==null) {
+            $scope.loadedImage++;
+            $meteor.call('addPic', res[0]._id._id, data);
+            if ($scope.loadedImage==$scope.newImages.length) {
+                $rootScope.showSpinner = false;
+                $scope.go("/ad/"+data);
+            }
+        } else {
+            $timeout($scope.checkLoading,2000,true,res,data);
+        }
     };
     $scope.replacePrevs = function(a,b) {
         var before = $scope.imgSrc[b];
