@@ -31,5 +31,5 @@ angular:angular-animate
 arkham:comments-ui
 angular
 vitalets:angular-xeditable
-comments-ui-angular
 sacha:spin
+angular-blaze

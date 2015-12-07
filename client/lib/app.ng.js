@@ -18,7 +18,7 @@ Comments.ui.setContent({
   'load-more': 'Еще комментарии'
 });
 
-angular.module('bullboard',['angular-meteor', 'ui.router','ui.bootstrap','ngFileUpload','angular-sortable-view','ngAnimate', 'comments.ui', 'xeditable'])
+angular.module('bullboard',['angular-meteor', 'ui.router','ui.bootstrap','ngFileUpload','angular-sortable-view','ngAnimate', 'blazeTemplates', 'xeditable'])
 .run(function(editableOptions){
     editableOptions.theme = 'bs3';
 });
